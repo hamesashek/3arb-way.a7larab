@@ -1,0 +1,7 @@
+<div class="most_viewed_post nodis">
+	<div id="abox_lastpost" class="content_to_take">
+          	<!-- BEGIN TOPIC -->
+		<h4><b class="right nodis">عدد المشاهدات</b><a href="{TOPIC.LINK}" title="{TOPIC.TITLE}">{TOPIC.NAME}</a></h4>
+          	<!-- END TOPIC -->
+	</div>
+</div>
