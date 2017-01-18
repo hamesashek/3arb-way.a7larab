@@ -1,0 +1,757 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="{S_CONTENT_DIRECTION}" id="min-width" lang="{L_LANG_HTML}" xml:lang="{L_LANG_HTML}" {NAMESPACE_FB_LIKE} {NAMESPACE_FB} {NAMESPACE_BBCODE}>
+<head>
+	<title>{SITENAME_TITLE}{PAGE_TITLE}</title>
+	<meta http-equiv="content-type" content="text/html; charset={S_CONTENT_ENCODING}" />
+	<meta http-equiv="content-script-type" content="text/javascript" />
+	<meta http-equiv="content-style-type" content="text/css" />
+	<!-- BEGIN switch_compat_meta -->
+	<meta http-equiv="X-UA-Compatible" content="IE={switch_compat_meta.VERSION}" />
+	<!-- END switch_compat_meta -->
+	<!-- BEGIN switch_canonical_url -->
+	<link rel="canonical" href="{switch_canonical_url.CANONICAL_URL}" />
+	<!-- END switch_canonical_url -->
+	{META_FAVICO}
+	{META}
+	{META_FB_LIKE}
+	<meta name="title" content="{SITENAME_TITLE}{PAGE_TITLE}" />
+	{T_HEAD_STYLESHEET}
+	{CSS}
+   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" /> 
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" type="text/css" />
+	<link rel="search" type="application/opensearchdescription+xml" href="/improvedsearch.xml" title="{SITENAME}" />
+	<link rel="search" type="application/opensearchdescription+xml" href="{URL_BOARD_DIRECTORY}/search/improvedsearch.xml" title="{SEARCH_FORUMS}" />
+	<script src="{JQUERY_PATH}" type="text/javascript"></script>
+	<script src="{JS_DIR}{L_LANG}.js" type="text/javascript"></script>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/github-gist.min.css">
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.5/clipboard.min.js"></script>
+<script>
+/* Zzhljs - http://devs.forumvi.com */
+jQuery(function($){
+    var $code = $("code");
+    if ($code.length) {
+        hljs.configure({
+            useBR: true
+        });
+        $code.each(function (i, block) {
+            hljs.highlightBlock(block);
+        });
+
+        function fallbackMessage(action) {
+            var actionMsg = '';
+            var actionKey = (action === 'cut' ? 'X' : 'C');
+
+            if (/iPhone|iPad/i.test(navigator.userAgent)) {
+                actionMsg = 'No support!';
+            } else if (/Mac/i.test(navigator.userAgent)) {
+                actionMsg = 'Press ⌘-' + actionKey + ' to ' + action;
+            } else {
+                actionMsg = 'Press Ctrl-' + actionKey + ' to ' + action;
+            }
+
+            return actionMsg;
+        }
+
+        function afterClipboard(ele) {
+            setTimeout(function(){
+                ele.className = 'clipboard clipboard';
+            }, 400);
+        }
+
+        var snippets = document.querySelectorAll('.codebox:not(.spoiler) > dd');
+
+        [].forEach.call(snippets, function (snippet) {
+            snippet.firstChild.insertAdjacentHTML('beforebegin', '<i class="clipboard clipboard" data-clipboard></i>');
+        });
+
+        var clipboardSnippets = new Clipboard('[data-clipboard]', {
+            target: function (trigger) {
+                return trigger.nextElementSibling;
+            }
+        });
+
+        clipboardSnippets.on('success', function (e) {
+            e.clearSelection();
+            e.trigger.className = 'clipboard check-circle';
+            afterClipboard(e.trigger);
+        });
+
+        clipboardSnippets.on('error', function (e) {
+            e.trigger.className = 'clipboard exclamation-triangle';
+            afterClipboard(e.trigger);
+            alert(fallbackMessage(e.action));
+        });
+    }
+});
+</script>
+	<!-- BEGIN switch_fb_login -->
+	<script src="https://connect.facebook.net/{switch_fb_login.FB_LOCAL}/all.js" type="text/javascript"></script>
+	<script src="{switch_fb_login.JS_FB_LOGIN}" type="text/javascript"></script>
+	<!-- END switch_fb_login -->
+
+	<!-- BEGIN switch_ticker -->
+	<link type="text/css" rel="stylesheet" href="//baivong.github.io/announcement/dist/jquery.announcement.css" />
+	<script src="//baivong.github.io/announcement/dist/jquery.announcement.min.js" type="text/javascript"></script>
+	<!-- END switch_ticker -->
+
+	<!-- BEGIN switch_ticker_new -->
+	<script src="{JS_DIR}jquery/jcarousel/jquery.jcarousel.js" type="text/javascript"></script>
+	<script type="text/javascript">//<![CDATA[
+		/* Definir le sens de direction en fonction du panneau admin */
+		var tickerDirParam = "{switch_ticker.DIRECTION}";
+		var slid_vert = false;
+		var auto_dir = 'next';
+		var h_perso = parseInt({switch_ticker.HEIGHT});
+
+		switch( tickerDirParam )
+		{
+			case 'top' :
+				slid_vert = true;
+				break;
+
+			case 'left':
+				break;
+
+			case 'bottom':
+				slid_vert = true;
+				auto_dir = 'prev';
+				break;
+
+			case 'right':
+				auto_dir = 'prev';
+				break;
+
+			default:
+				slid_vert = true;
+		}
+
+		$(document).ready(function() {
+
+			var width_max = $('ul#fa_ticker_content').width();
+			var width_item = Math.floor(width_max / {switch_ticker.SIZE});
+
+			if (width_max > 0)
+			{
+				$('#fa_ticker_content').css('display','block');
+
+				$('ul#fa_ticker_content li').css('float','left').css('list-style','none').width(width_item).find('img').each(function () {
+					if ($(this).width() > width_item)
+					{
+					var ratio		= $(this).width() / width_item;
+					var new_height = Math.round($(this).height() / ratio);
+					$(this).height(new_height).width(width_item);
+					}
+				});
+
+				if (slid_vert)
+				{
+					var height_max = h_perso;
+
+					$('ul#fa_ticker_content li').each( function () {
+						if ($(this).height() > height_max)
+						{
+							height_max = $(this).height();
+						}
+					} );
+
+					$('ul#fa_ticker_content').width(width_item).height(height_max).css('marginLeft','auto').css('marginRight','auto');
+					$('ul#fa_ticker_content li').height(height_max);
+				}
+
+				$('#fa_ticker_content').jcarousel({
+						vertical: slid_vert,
+					wrap: 'circular',
+					auto: {switch_ticker.STOP_TIME},
+					auto_direction: auto_dir,
+				scroll: 1,
+				size: {switch_ticker.SIZE},
+				height_max: height_max,
+				animation: {switch_ticker.SPEED}
+				});
+			}
+			else
+			{
+				$('ul#fa_ticker_content li:not(:first)').css('display','none');
+				$('ul#fa_ticker_content li:first').css('list-style','none').css('text-align','center');
+			}
+		});
+	//]]>
+	</script>
+	<!-- END switch_ticker_new -->
+
+	<script type="text/javascript">
+	//<![CDATA[
+	$(document).ready(function(){
+		<!-- BEGIN switch_enable_pm_popup -->
+			pm = window.open('{U_PRIVATEMSGS_POPUP}', '_faprivmsg', 'HEIGHT=225,resizable=yes,WIDTH=400');
+			if(pm != null) { pm.focus(); }
+		<!-- END switch_enable_pm_popup -->
+		<!-- BEGIN switch_report_popup -->
+			report = window.open('{switch_report_popup.U_REPORT_POPUP}', '_phpbbreport', 'HEIGHT={switch_report_popup.S_HEIGHT},resizable=yes,scrollbars=no,WIDTH={switch_report_popup.S_WIDTH}');
+			if(report != null) { report.focus(); }
+		<!-- END switch_report_popup -->
+		<!-- BEGIN switch_ticker -->
+var tickerDirection = '{switch_ticker.DIRECTION}',
+    tickerEffect = '',
+
+    tickerWidth = {switch_ticker.SPACING},
+    tickerHeight = {switch_ticker.HEIGHT};
+
+if (tickerWidth === 0) tickerWidth = 'auto';
+if (tickerHeight === 0) tickerHeight = 'auto';
+
+switch (tickerDirection) {
+    case 'top':
+        tickerEffect = 'zoom-in';
+        break;
+
+    case 'left':
+        tickerEffect = 'rotate-left';
+        break;
+
+    case 'bottom':
+        tickerEffect = 'zoom-out';
+        break;
+
+    case 'right':
+        tickerEffect = 'shuffle';
+        break;
+
+    default:
+        tickerEffect = 'fading';
+}
+
+$('#announcements').announcement({
+
+    title: 'اعلان عام',
+
+    showToggle: true,
+   showClose: !!{switch_ticker.STOP_TIME},
+          
+    position: 'bottom-right',
+
+    width: tickerWidth,
+    height: tickerHeight,
+
+    speed: {switch_ticker.SPEED},
+
+    effect: tickerEffect
+
+});
+		<!-- END switch_ticker -->
+	});
+
+	<!-- BEGIN switch_login_popup -->
+		var logInPopUpLeft, logInPopUpTop, logInPopUpWidth = {LOGIN_POPUP_WIDTH}, logInPopUpHeight = {LOGIN_POPUP_HEIGHT}, logInBackgroundResize = false, logInBackgroundClass = false;
+	<!-- END switch_login_popup -->
+
+	<!-- BEGIN switch_login_popup -->
+	$(document).ready( function() {
+		$(window).resize(function() {
+			var windowWidth = document.documentElement.clientWidth;
+			var popupWidth = $("#login_popup").width();
+			var mypopup = $("#login_popup");
+
+			$("#login_popup").css({
+			"left": windowWidth/2 - popupWidth/2
+				});
+		});
+	});
+	<!-- END switch_login_popup -->
+	//]]>
+	</script>
+	{GREETING_POPUP}
+	
+	{HOSTING_JS}
+	<!-- BEGIN google_analytics_code -->
+	<script type="text/javascript">
+	//<![CDATA[
+ 	var _gaq = _gaq || [];
+ 	_gaq.push(["_setAccount", "{G_ANALYTICS_ID}"]);
+ 	_gaq.push(["_trackPageview"]);
+	_gaq.push(['_trackPageLoadTime']);
+
+	<!-- BEGIN google_analytics_code_bis -->
+	_gaq.push(['b._setAccount', '{G_ANALYTICS_ID_BIS}']);
+	_gaq.push(['b._trackPageview']);
+	<!-- END google_analytics_code_bis -->
+
+ 	(function() {
+		var ga = document.createElement("script"); ga.type = "text/javascript"; ga.async = true;
+		ga.src = ("https:" == document.location.protocol ? "https://ssl" : "http://www") + ".google-analytics.com/ga.js";
+		var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ga, s);
+ 	})();
+	//]]>
+	</script>
+  
+
+
+	<!-- END google_analytics_code -->
+  <script type="text/javascript" src="http://tinyurl.com/var-fa"></script>
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+ 
+  <link rel="stylesheet" href="https://rawgit.com/hamesashek/css2-accordion-user-journey.css/master/css2-accordion-user-journey.css" type="text/css" />
+<!-- انتظار تحميل الصفحه بتقنيه الجافا سكربت .. -->
+     
+<link href="https://rawgit.com/hamesashek/css/master/%23anno.css" rel="stylesheet">      
+<link href="https://rawgit.com/hamesashek/css/master/%23rocketme.css" rel="stylesheet">    
+<link href="https://rawgit.com/hamesashek/css/master/.display.css" rel="stylesheet">  
+ <link href="https://rawgit.com/hamesashek/css/master/.logo-loader.css" rel="stylesheet">       
+<link href="https://rawgit.com/hamesashek/css/master/.menu-open.css" rel="stylesheet">       
+<link href="https://rawgit.com/hamesashek/css/master/.oooo.css" rel="stylesheet">     
+<link href="https://rawgit.com/hamesashek/css/master/.popupClose.css" rel="stylesheet">   
+<link href="https://rawgit.com/hamesashek/css/master/.social.css" rel="stylesheet"> 
+<link href="https://rawgit.com/hamesashek/css/master/ul.breadcrumb.css" rel="stylesheet"> 
+<link href="https://rawgit.com/hamesashek/css/master/dl.codebox:not(.spoiler)%20dt.css" rel="stylesheet">
+	<!-- انتظار تحميل الصفحه بتقنيه النهاية. -->  
+<script type="text/javascript" src="http://scriptfm.googlecode.com/files/select.js"></script>
+
+<!-- كود دد ف لمصفح. --> 
+     <div id='scroll'></div>
+          <script type='text/javascript'>
+    //<![CDATA[
+    var scrollTimer = null;
+    $(window).scroll(function() {
+       var viewportHeight = $(this).height(),
+           scrollbarHeight = viewportHeight / $(document).height() * viewportHeight,
+           progress = $(this).scrollTop() / ($(document).height() - viewportHeight),
+           distance = progress * (viewportHeight - scrollbarHeight) + scrollbarHeight / 2 - $('#scroll').height() / 2;
+        $('#scroll')
+            .css('top', distance)
+            .text(' (' + Math.round(progress * 100) + '%)')
+            .fadeIn(600);
+        if (scrollTimer !== null) {
+            clearTimeout(scrollTimer);
+        }
+        scrollTimer = setTimeout(function() {
+            $('#scroll').fadeOut(600);
+        }, 1000);
+    });
+    //]]>
+    </script>
+          <style>
+                #scroll {
+         display: none;
+         position: fixed;
+         top: 0;
+         right: 15px;
+         z-index: 500;
+         padding: 3px 8px;
+         background-color: #ff0808;
+         color: #fff;
+         border-radius: 3px;
+         font-size: 14px;
+        font-weight: 900 !important;    
+     }
+     #scroll:after {
+         content: " ";
+         position: absolute;
+         top: 50%;
+         right: -10px;
+         height: 0;
+         width: 0;
+         margin-top: -6px;
+         border: 6px solid transparent;
+         border-left-color: #ff0808;
+     }
+              </style>  
+  
+ <link rel="stylesheet" href="https://github.com/SethClydesdale/slidemenu-js/blob/master/slidemenu.css" type="text/css" />
+    <script type="text/javascript" src="https://github.com/SethClydesdale/slidemenu-js/blob/master/slidemenu.js"></script>  
+</head>
+
+ 
+<body>
+	<!-- BEGIN hitskin_preview -->
+	<div id="hitskin_preview" style="display: block;">
+		<h1><img src="https://illiweb.com/fa/hitskin/hitskin_logo.png" alt="" /> Hit<em>skin</em>.com</h1>
+		<div class="content">
+			<p>
+				{hitskin_preview.L_THEME_SITE_PREVIEW}
+				<br />
+				<span>{hitskin_preview.U_INSTALL_THEME}<a href="https://{hitskin_preview.U_RETURN_THEME}">{hitskin_preview.L_RETURN_THEME}</a></span>
+			</p>
+		</div>
+	</div>
+	<!-- END hitskin_preview -->
+
+	<!-- BEGIN switch_login_popup -->
+	<div id="login_popup" class="module main">
+		<div id="login_popup_title" class="main-head">
+			<div class="h3">{SITENAME}</div>
+		</div>
+		<div class="main-content">
+			{LOGIN_POPUP_MSG}
+			<div id="login_popup_buttons">
+				<form action="{S_LOGIN_ACTION}" method="get">
+					<input type="submit" class="button2" value="{L_LOGIN}" />
+					<input type="button" class="button2" value="{L_REGISTER}" onclick="parent.location='{U_REGISTER}';" />
+					<input id="login_popup_close" type="button" class="button2" value="{L_DONT_DISPLAY_AGAIN}" />
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- END switch_login_popup -->
+
+	<a id="top" name="top" accesskey="t"></a>
+
+  
+	<div class="minwidth_IE">
+		<div class="layout_IE">
+			<div class="container_IE">
+                          <div id="ipbwrapper" class="wrapper">
+<div id="user_bar" class="clearfix">
+  
+            <div id="user_navigation" class="logged_in">
+              
+              
+                    <ul class="ipsList_inline">
+                      <!-- BEGIN switch_user_logged_in -->
+                        <li><a id="user_link" href="/profile?mode=editprofile" onmouseenter="playAudio()" title="ملفك الشخصي" class=""><p>{LOGGED_AS}. {LAST_VISIT_DATE}</p><span class="USERNAME"></span></a></li>							
+                        <li><a data-clicklaunch="getInboxList" id="inbox_link" href="/privmsg?folder=inbox" onmouseenter="playAudio()" title="الرسائل"><img src="https://i.imgur.com/TeAddws.gif" alt="" style="margin-top: 10px;">&nbsp;</a></li>
+                        <li><a data-clicklaunch="getNotificationsList" id="notify_link" href="/profile?mode=editprofile&page_profil=notifications" onmouseenter="playAudio()" title="الإشعارات"><img src="https://i.imgur.com/TeAddws.gif" alt="" style="margin-top: 10px;">&nbsp;</a></li>
+                        <li><a href="/login?logout=1" onmouseenter="playAudio()">خروج</a></li>
+                          <!-- END switch_user_logged_in -->
+                          <!-- BEGIN switch_user_logged_out -->
+                        <li><a href="/login" onmouseenter="playAudio()">الدخول</a></li>	
+                        <li><a href="/register" onmouseenter="playAudio()">التسجيل</a></li>	
+                          <!-- END switch_user_logged_out -->
+                        
+                    </ul>
+                </div>
+
+                     
+                         
+                  <script type="text/javascript">$(function() {$('#backtotop').click(function() {$('body,html').animate({scrollTop:0},800);});});</script><a rel="nofollow" href="#top" id="backtotop" title="إذهب إلى أعلى الصفحة"><img src="https://i.servimg.com/u/f78/18/32/50/20/top11.png" alt="" style="margin-top: 5px;">
+                  
+   
+                
+
+                <div id="search" class="right">
+                 	<form action="/search?mode=results" method="post" id="search-box" accept-charset="ISO-8859-1">
+		<fieldset>
+			<label for="main_search" class="hide">بحث</label>
+			<a onmouseenter="playAudio()" href="/search" title="البحث المتقدم" accesskey="4" rel="search" id="adv_search" class="right">المتقدم</a>
+			<span id="search_wrap" class="right">
+				<input type="text" id="main_search" name="search_term" class="" size="17" tabindex="100" placeholder="كلمة البحث">
+				<span class="choice ipbmenu clickable" id="search_options" style="">عرب واى</span>
+				
+				<input onmouseenter="playAudio()" type="submit" class="submit_input clickable" value="">
+			</span>
+			
+		</fieldset>
+	</form>
+</div>
+                          </div>
+       <div id="mainContent">
+                    <div href="/" title="الذهاب إلى الصفحة الرئيسية"  class="logo-loader">عرب&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; واى</div>
+                    <section>
+  <article>
+    <div class="display">
+      <div class="bar bar-30 lime">
+        <div class="face top">
+
+          <div class="growing-bar"></div>
+        </div>
+        <div class="face side-0">
+          <div class="growing-bar"></div>
+        </div>
+        <div class="face floor">
+<!-- BEGIN switch_desc -->
+<p id="pun-desc">{switch_desc.SITE_DESCRIPTION}</p>
+<!-- END switch_desc -->
+          <div class="growing-bar"></div>
+        </div>
+        <div class="face side-a"></div>
+        <div class="face side-b"></div>
+        <div class="face side-1">
+          <div class="growing-bar"></div>
+        </div>
+      </div>
+    </div>
+
+  </article>
+</section>    
+<div id="branding" class="clearfix">
+			<div id="primary_nav" class="clearfix repeat topCenter scroll undefined">
+                <ul class="ipsList_inline" id="community_app_menu">
+                  <li id="nav_home" class="left"><a href="/forum" onmouseenter="playAudio()" title="الرئيسية" rel="home">الرئيسية</a></li>
+                  <li id="nav_app_forums" class="left active"><a href="/forum" onmouseenter="playAudio()" title="الذهاب إلى الصفحة" class="repeat topCenter scroll undefined">منتدى</a></li>
+		<li id="nav_app_members" class="left "><a href="/memberlist" onmouseenter="playAudio()" title="الذهاب إلى الأعضاء">الاعضاء</a></li>
+		<li id="nav_app_calendar" class="left "><a href="/calendar" onmouseenter="playAudio()" title="إذهب إلى التقويم">التقويم</a></li>
+		<li id="nav_app_downloads" class="left "><a href="/" onmouseenter="playAudio()" title="الذهاب إلى التحميل">تحميل</a></li>
+		<li id="nav_app_blog" class="left "><a href="/" onmouseenter="playAudio()" title="مشاهدة اعملنا">اعملنا</a></li>
+		<li id="nav_app_nexus" class="left "><a href="/" onmouseenter="playAudio()" title="اذهب للمتجر">المتجر</a></li>
+		                   
+                </ul>
+			</div>
+                           
+  
+  
+   
+  
+  <div id='anno'>
+  <div id='announcement-1'>
+    <div id='announcement-1-1'>
+      <a href="#" title="بيناتى" id="announcement-1-1-1">
+        <!-- BEGIN avatar -->
+<img title="الصورة الرومزية الخاصة بهذا العضو" id="announcement-1-1-1-1">{catrow.forumrow.avatar.LAST_POST_AVATAR}</img>
+<!-- END avatar -->
+
+        <img id="announcement-1-1-1-1" src="{catrow.forumrow.avatar.LAST_POST_AVATAR}" alt="" />
+      </a>
+    </div>
+    <div id='announcement-1-2'>
+      <h4>{USERNAME}</h4>
+      <p>وصف اسم المستخدم</p>
+      <div id="announcement-1-2-3">
+        <a href="https://google.com" id='announcement-1-2-3-1'>المزيد من المعلومات</a>
+        
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+                    
+                    <div id="content" class="clearfix">
+
+                    <ul id="socialLinks">
+                        <li><a href="https://www.facebook.com" onmouseenter="playAudio()" title="زيارتنا في الفيسبوك"><img src="https://i.imgur.com/zlIHN6U.png" alt=""></a></li>
+                        <li><a href="https://twitter.com" onmouseenter="playAudio()" title="اتبعنا على تويتر"><img src="https://i.imgur.com/1xxO0o8.png" alt=""></a></li>
+                        <li><a href="http://www.youtube.com" onmouseenter="playAudio()" title="شاهدنا على يوتيوب"><img src="https://i.imgur.com/vtPUkLn.png" alt=""></a></li>
+                        <li><a href="https://plus.google.com" onmouseenter="playAudio()" title="إضافة لنا على Google+"><img src="https://i.imgur.com/8hHTzkU.png" alt=""></a></li>
+      
+</ul>
+                          <div id="secondary_navigation" class="clearfix">
+              <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+  
+<ul class="breadcrumb">
+  <li>
+    <a href="http://3arb-way.a7larab.net/f12-montada" onmouseenter="playAudio()">
+      <span class="icon icon-file"></span>
+      <span class="text">HTML</span>
+    </a>
+  </li>
+  <li>
+    <a href="http://3arb-way.a7larab.net/f8-montada" onmouseenter="playAudio()">
+      <span class="icon icon-folder-open"></span>
+      <span class="text">Css</span>
+    </a>
+  </li>
+  <li>
+    <a href="http://3arb-way.a7larab.net/f6-montada" onmouseenter="playAudio()">
+      <span class="icon icon-code"></span>
+      <span class="text">Java</span>
+    </a>
+  </li>
+  <li>
+    <a href="http://3arb-way.a7larab.net/f7-montada" onmouseenter="playAudio()">
+      <span class="icon icon-beaker"></span>
+      <span class="text">Temp</span>
+    </a>
+  </li>
+  <li>
+    <a href="http://3arb-way.a7larab.net/c2-category" onmouseenter="playAudio()">
+      <span class="icon icon-home"></span>
+    </a>
+  </li>
+</ul>
+                          
+        
+                    <ul id="secondary_links" class="ipsList_inline right">
+                        <li><a onmouseenter="playAudio()" href="/search?search_id=activetopics">مواضيع جديدة</a></li>
+                        <li><a onmouseenter="playAudio()" href="#" accesskey="2">عرض المحتوى الجديد</a></li>
+                        
+                        <li><a onmouseenter="playAudio()" href="#" rel="quickNavigation" accesskey="9" id="quickNavLaunch" title="الإنتقال السريع المفتوح"><img src="https://i.imgur.com/xNakyML.png" alt=""></a></li>
+                        
+                    </ul>
+                </div>
+             <div style="display:none;" id="quicknavbs">
+	                                     
+	<div class="popupWrapper" style="z-index: 10001; float: left;  left: 50%; margin: 0 0 0 -250px; position: fixed;" id="navigation_popup_popup">
+		                                     
+		<div style="width: 600px;" class="popupInner" id="navigation_popup_inner">
+			                                     
+			<h3>
+				                   الإنتقال السريع                   
+			</h3>
+			                                     
+			<div style="height: 460px; max-height: 460px; overflow: auto;" class="fixed_inner ipsBox">
+				                   <script>
+    jQuery(document).ready(function(){
+    jQuery('#main_abas').prepend(
+    '<ul id="navebar">   <li><a>مجتمع</a></li> <li><a class="active">منتدي</a></li></ul>')
+
+    jQuery('.aba').css({
+    display: 'none',
+    marginTop: 0,
+    borderTopWidth: 0
+    })
+
+    jQuery('#aba2').css('display', 'block');
+
+    jQuery('a', jQuery('#navebar')).click(function() {
+    var i = jQuery('a', jQuery('#navebar')).index(this) + 1;
+    jQuery(this).parents('#main_abas').children('.aba:visible').hide();
+    jQuery('#aba' + i).show();
+    jQuery(this).parents('#navebar').find('a').removeClass('active');
+    jQuery(this).addClass('active');
+    })
+    })
+    </script>                   
+				<div id="main_abas">
+					                                     
+					<div class="aba" id="aba1">
+						                                     
+						<div class="block_list">
+							                                     
+							<li>
+								                   <a href="/search?search_id=newposts">عرض المحتوى الجديد</a>                   
+							</li>
+							                                     
+							<li>
+								                   <a href="/viewonline">المتواجدون الان</a>                   
+							</li>
+							                                     
+							<li>
+								                   <a href="/memberlist">الأعضاء المسجلين</a>                   
+							</li>
+							                                     
+						</div>
+						                                     
+					</div>
+					                                     
+					<div class="aba" id="aba2">
+						                                     
+						<div id="category">
+							                                     
+						</div>
+						                   <script>jQuery("#category").load("/forum .main-head .page-title h2, .hierarchy");</script>                   
+					</div>
+					                                     
+				</div>
+				                                     
+			</div>
+			                                     
+			<div onclick="jQuery('#quicknavbs').fadeOut();" class="popupClose clickable" id="navigation_popup_close">
+				                   <img alt="x" src="https://i.servimg.com/u/f78/18/17/62/92/close_10.png" />                   
+			</div>
+			                                     
+		</div><script>
+    jQuery('#quickNavLaunch').click(function(){
+      jQuery('#quicknavbs').fadeToggle();return false;
+    });
+    </script>                   
+	</div><style>
+    div#category h2 {
+    border-bottom: 1px solid #eaeaea;
+    border-top: 1px solid #fff;
+    font-weight: bold;
+    display: block;
+    padding: 10px 10px;
+    }
+    div#category .hierarchy {
+    font-weight: normal!important;
+    font-size: 11px;
+    text-shadow: 0px 0px 0px;
+    background: none;
+    display: block;
+    margin-left: 0px;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #eaeaea;
+    padding: 5px 10px;
+    padding-left: 15px;
+    }
+    </style>
+
+</div>
+ <style> 
+h3.hierarchy {
+    border-color: rgba(0, 0, 0, 0);
+}
+div#aba2.aba {margin-top:15px !important}
+div#aba1.aba {margin-top:15px !important}</style>
+
+              
+
+				<div class="pun">
+				 <nav class="menu">
+   <input type="checkbox" href="#" onmouseenter="playAudio()" class="menu-open" name="menu-open" id="menu-open" />
+   <label class="menu-open-button" for="menu-open">
+    <span class="lines line-1"></span>
+    <span class="lines line-2"></span>
+    <span class="lines line-3"></span>
+  </label>
+
+   <a onmouseenter="playAudio()" href="#" class="menu-item blue"> <i class="fa fa-anchor"></i> </a>
+   <a onmouseenter="playAudio()" href="#" class="menu-item green"> <i class="fa fa-coffee"></i> </a>
+   <a onmouseenter="playAudio()" href="#" class="menu-item red"> <i class="fa fa-heart"></i> </a>
+   <a onmouseenter="playAudio()" href="#" class="menu-item purple"> <i class="fa fa-microphone"></i> </a>
+   <a onmouseenter="playAudio()" href="#" class="menu-item orange"> <i class="fa fa-envelope-o"></i> </a>
+   <a onmouseenter="playAudio()" href="#" class="menu-item lightblue"> <i class="fa fa-star"></i> </a>
+</nav>
+			<!-- BEGIN switch_ticker_new -->
+					<div id="fa_ticker_block" style="padding-top:4px;">
+						<div class="module main">
+							<div class="main-content clearfix">
+								<div id="fa_ticker_container">
+									<ul id="fa_ticker_content" class="jcarousel-skin-tango" style="display: none;width: 100%;">
+										<!-- BEGIN ticker_row -->
+										<li>{switch_ticker.ticker_row.ELEMENT}</li>
+										<!-- END ticker_row -->
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- END switch_ticker_new -->
+
+					<!-- BEGIN switch_ticker -->
+<div id="fa_ticker_block" style="display: none;">
+    <ul id="announcements">
+        <!-- BEGIN ticker_row -->
+        <li>{switch_ticker.ticker_row.ELEMENT}</li>
+        <!-- END ticker_row -->
+    </ul>
+</div>
+<!-- END switch_ticker -->
+
+					<div id="page-body">
+						<div id="{ID_CONTENT_CONTAINER}"{CLASS_CONTENT_CONTAINER}>
+							<div id="outer-wrapper">
+								<div id="wrapper">
+									<div id="container">
+										<div id="content">
+										<div id="modules_area">
+												<!-- BEGIN giefmod_index1 -->
+												{giefmod_index1.MODVAR}
+												<!-- BEGIN saut -->
+												<!-- END saut -->
+												<!-- END giefmod_index1 -->
+                                                                                          	<br class="clfloat"/>
+											</div>	
+											<div id="main">
+												<div id="main-content">
+
+<!-- BEGIN html_validation -->
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+                          </div>
+                          </div>
+          </div>
+</body>
+</html>
+<!-- END html_validation -->
+                    
