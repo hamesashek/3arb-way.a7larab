@@ -1,0 +1,12 @@
+<div class="a_box top_poster">
+	<div id="a_box_padding">
+		<div id="abox_descript">
+			<h3>أعضاء متميز</h3>
+		</div>
+		<div id="abox_lastpost">
+                  	<!-- BEGIN POSTER -->
+			<h4 title="{POSTER.NB_POSTS}">{POSTER.NAME}</h4>
+                  	<!-- END POSTER -->
+		</div>
+	</div>
+</div>
