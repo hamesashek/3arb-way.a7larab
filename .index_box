@@ -1,0 +1,77 @@
+<div class="pun-crumbs">
+	<p class="crumbs"><a onmouseenter="playAudio()" href="{U_INDEX}">{L_INDEX}</a><strong>{NAV_CAT_DESC}</strong></p>
+</div>
+<div id="indexBox" class="main">
+<!-- BEGIN catrow -->
+	<!-- BEGIN tablehead -->
+		<center><div class="main-head">
+			<div class="page-title">{catrow.tablehead.L_FORUM}</div>
+             </div>
+         <center> <img src="https://i42.servimg.com/u/f42/14/12/03/12/129.png" width="98%"></img></center>
+  </center>
+		<div class="main-content" id="index_forums">
+                  <div class="alert">
+                    <p onmouseenter="playAudio()" class="closebtn" onclick="this.parentElement.style.display='none';">&times;</p> 
+			<table cellspacing="0" class="table">
+			
+				<tbody class="statused">
+	<!-- END tablehead -->
+
+	<!-- BEGIN forumrow -->
+<center>
+						<td>
+                                 
+<div id="forum_box">
+
+<div class="white_border">
+
+<h{catrow.forumrow.LEVEL} class="hierarchy"><a onmouseenter="playAudio()" href="{catrow.forumrow.U_VIEWFORUM}" title="{catrow.forumrow.FORUM_NAME}"class="forumtitle">{catrow.forumrow.FORUM_NAME}</a></h{catrow.forumrow.LEVEL}>
+							<br />							
+
+
+
+<div id="title_separator"> </div>
+
+<div id="forum_stats">
+  {catrow.forumrow.FORUM_DESC}
+  
+</div>
+<div class="info right">
+  <div title="عدد المواضيع" class="topics">{catrow.forumrow.POSTS} المواضيع </div> <div title="عدد المساهمات" class="posts"> {catrow.forumrow.TOPICS} المساهمات</div> </div>
+   <!-- BEGIN avatar -->
+                            <span title="الصورة الرومزية الخاصة بهذا العضو" class="lastpost-avatar">{catrow.forumrow.avatar.LAST_POST_AVATAR}</span>
+                            <!-- END avatar -->
+
+							<span>
+							<!-- BEGIN switch_topic_title -->
+                                                          <div class="LATEST_TOPIC_NAME">
+							<a onmouseenter="playAudio()" href="{catrow.forumrow.U_LATEST_TOPIC}" title="{catrow.forumrow.LATEST_TOPIC_TITLE}">{catrow.forumrow.LATEST_TOPIC_NAME}</a><br />
+                                                            </div>
+							<!-- END switch_topic_title -->
+							<div class="me">{catrow.forumrow.USER_LAST_POST}</div>
+<div class="mesaje"><img title="{catrow.forumrow.L_FORUM_FOLDER_ALT}" src="{catrow.forumrow.FORUM_FOLDER_IMG}" alt="{catrow.forumrow.L_FORUM_FOLDER_ALT}"></img> 
+  </div> 
+</div>
+</div>
+  <center> <img src="https://i42.servimg.com/u/f42/14/12/03/12/129.png" width="98%"></img></center>
+               </td>
+		
+	<!-- END forumrow -->
+
+	<!-- BEGIN tablefoot -->
+		</tbody>
+			</table>
+		</div>		
+	<!-- END tablefoot -->
+<!-- END catrow -->
+</div>
+</div>
+<!-- BEGIN switch_on_index -->
+<div class="main-box clearfix" id="tops_links">
+	<ul>
+		<li><a onmouseenter="playAudio()" href="{U_TODAY_ACTIVE}">{L_TODAY_ACTIVE}</a></li>
+		<li><a onmouseenter="playAudio()" href="{U_TODAY_POSTERS}">{L_TODAY_POSTERS}</a></li>
+		<li><a onmouseenter="playAudio()" href="{U_OVERALL_POSTERS}">{L_OVERALL_POSTERS}</a></li>
+	</ul>
+</div>
+<!-- END switch_on_index -->
