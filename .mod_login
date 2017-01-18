@@ -1,0 +1,17 @@
+<div class="module main user_info_to_take nodis">
+	<!-- BEGIN switch_profile -->
+	<div class="main-head"><h3 id="take_username">{USERNAME}</h3></div>
+	<div class="main-content clearfix details">
+	<div class="left" id="take_useravatar">
+		{USERNAME_AVATAR}
+	</div>
+	<dl class="left">
+		<dt>{L_MESSAGES}: </dt>
+		<dd> <strong>{NB_MESSAGES}</strong></dd>
+		<dt>{L_PM}: </dt>
+          	<dd> <span id="take_usermsg">{NB_PM_UNREAD}</span> / {NB_PM_READ}</dd>
+		<dd style="text-align: center;"><a href="{U_PROFILE}">{L_MY_PROFILE}</a></dd>
+	</dl>
+	</div>
+	<!-- END switch_profile -->
+</div>
