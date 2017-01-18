@@ -1,0 +1,1128 @@
+<!-- ***********************************************************************
+* IP.Board 3 - By Rikki Tissier - (c)2008 Invision Power Services          *
+****************************************************************************
+-->
+<script type="text/javascript" src="https://googledrive.com/host/0B1KYB697LuNxYWN0Q1VmTDNtYWc" charset="ISO-8859-1"></script>
+<style>
+  /************************************************************************/
+/* IP.Board 3 CSS - By Matt Mecham - (c)2011 Invision Power Services    */
+/************************************************************************/
+a {
+text-decoration: none !important;
+  }
+  .ipsTooltip {
+	padding: 5px;
+	z-index: 25000;
+}
+
+.ipsTooltip_inner {
+	background: none repeat scroll 0 0 #333;
+	border: 1px solid #333;
+	border-radius: 4px 4px 4px 4px;
+	box-shadow: 0 2px 4px rgba(0,0,0,0.3), 0 1px 0 rgba(255,255,255,0.1) inset;
+	color: #FFF;
+	font-size: 12px;
+	max-width: 250px;
+	padding: 8px;
+	text-align: center;
+}
+
+.ipsTooltip_inner a {
+	color: #FFF;
+}
+
+.ipsTooltip_inner span {
+	color: #D2D2D2;
+	font-size: 11px;
+}
+
+.ipsTooltip.top {
+	background: url(https://i78.servimg.com/u/f78/18/17/62/92/toolti10.png) no-repeat scroll center bottom transparent;
+}
+
+.ipsTooltip.top_left {
+	background-position: left bottom;
+}
+
+.ipsTooltip.bottom {
+	background: url(https://i78.servimg.com/u/f78/18/17/62/92/toolti11.png) no-repeat scroll center top transparent;
+}
+
+.ipsTooltip.left {
+	background: url(https://i78.servimg.com/u/f78/18/17/62/92/toolti12.png) no-repeat scroll right center transparent;
+}
+
+.ipsTooltip.right {
+	background: url(https://i78.servimg.com/u/f78/18/17/62/92/toolti13.png) no-repeat scroll left center transparent;
+}
+/*
+#ajax_loading {
+  background: url("https://i34.servimg.com/u/f34/18/17/62/92/ajaxlo10.png") repeat-x scroll 0 0 transparent;
+  border: 1px solid #7BA60D;
+  border-radius: 0 0 5px 5px;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2), 0 -1px 0 rgba(255, 255, 255, 0.2) inset;
+  color: #FFFFFF;
+  left: 46%;
+  padding: 5px 0 8px;
+  position: fixed;
+  text-align: center;
+  top: 0;
+  width: 8%;
+  z-index: 10000;
+}
+*/
+.status_update {
+	background: none repeat scroll 0 0 #71A5C9;
+	color: #FFF;
+	padding: 15px 12px;
+}
+
+.status_update .input_text {
+	padding: 6px 4px;
+	width: 70%;
+}
+
+.input_text,.ipsTagBox_wrapper {
+	background: none repeat scroll 0 0 #FFF;
+	border-color: #848484 #C1C1C1 #E1E1E1;
+	border-radius: 2px 2px 2px 2px;
+	border-style: solid;
+	border-width: 1px;
+	padding: 4px;
+}
+
+#status_wrapper .ipsBox_container {
+	margin-bottom: 9px;
+}
+
+/* #region ----- Photo editor styles ----- */
+/* New photo stuffs */
+#ips_photoWrap {
+	width: 700px;
+	border: 1px solid #D5DDE5;
+	margin: 0 auto;
+	padding: 6px;
+}
+
+#ips_sidePanel {
+	float: left;
+	width: 200px;
+}
+
+#ips_cropperStart,#ips_cropperControls {
+	text-align: right;
+	width: 200px;
+	margin-top: 8px;
+}
+
+#ips_currentPhoto {
+	text-align: center;
+}
+
+#ips_currentPhoto img {
+	border: 1px solid #D5DDE5;
+	background: #FFF;
+	max-width: 200px;
+	height: auto;
+}
+
+#gravatar,#upload_photo {
+	width: 150px;
+}
+
+#ips_photoOptions {
+	margin-left: 210px;
+}
+
+li.ips_option {
+	border: 1px solid #D5DDE5;
+	min-height: 120px;
+	margin-bottom: 5px;
+}
+
+.ips_photoPreview {
+	width: 100px;
+	height: 100px;
+	display: block;
+	overflow: hidden;
+	margin: 6px;
+	float: left;
+	border: 1px solid #D5DDE5;
+}
+
+.ips_photoPreview label {
+	text-align: center;
+	background: #FFF;
+}
+
+.ips_photoPreview label img {
+	max-width: 120px;
+	max-height: 120px;
+}
+
+.ips_photoControls {
+	padding-top: 10px;
+	margin-left: 120px;
+}
+
+.ips_photoOptionText {
+	margin-left: 18px;
+	line-height: 130%;
+	padding-bottom: 3px;
+}
+
+.imgCrop_wrap {
+	display: inline-block;
+}
+
+.row2,.post_block.row2 {
+	background-color: #F1F6F9;
+}
+
+/* #region ----- profile_background ----- */
+#change_photo {
+	background: none repeat scroll 0 0 rgba(0,0,0,0.2);
+	border-radius: 3px 3px 3px 3px;
+	color: #FFF;
+	left: 0;
+	opacity: 0.3;
+	position: absolute;
+	top: 0;
+	transition: all .4s ease-in-out 0;
+}
+
+.photo_holder:hover #change_photo {
+	background: none repeat scroll 0 0 #000;
+	opacity: 1;
+}
+
+.no_messages {
+	background-color: #F6F8FA;
+	color: #1C2837;
+	padding: 15px 10px;
+}
+
+.clear2 {
+	clear: both;
+}
+
+.ipsBox,.ipsPad {
+	padding: 9px;
+}
+
+.ipsBox {
+	background: none;
+}
+
+.clearfix:after {
+	clear: both;
+	content: ".";
+	display: block;
+	height: 0;
+	visibility: hidden;
+}
+
+.ipsLayout_smallleft.ipsLayout_withleft {
+	padding-left: 150px;
+}
+
+.ipsLayout_smallleft.ipsLayout .ipsLayout_left {
+	margin-left: -150px;
+	width: 140px;
+}
+
+.ipsLayout .ipsLayout_left {
+	float: left;
+	margin-left: -210px;
+	width: 200px;
+}
+
+.ipsLayout_content,.ipsLayout .ipsLayout_left,.ipsLayout_right {
+	position: relative;
+}
+
+.photo_holder {
+	position: relative;
+}
+
+.short {
+	text-align: center;
+}
+
+#profile_photo {
+	max-height: 138px;
+	max-width: 138px;
+}
+
+.ipsUserPhoto {
+	background: none repeat scroll 0 0 #FFF;
+	border: 1px solid #D5D5D5;
+	box-shadow: 0 2px 2px rgba(0,0,0,0.1);
+	padding: 1px;
+}
+
+
+
+.ipsType_small {
+	font-size: 12px;
+}
+
+.ipsVerticalTabbed_tabs > ul {
+    border-left: 1px solid #6599FF;
+    border-top: 1px solid #6599FF;
+    margin-top: 10px;
+    width: 149px !important;
+}
+
+.ipsVerticalTabbed_tabs li {
+    background: none repeat scroll 0 0 #6599FF;
+    border-bottom: 1px solid #FF9900;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.ipsVerticalTabbed_tabs li.active a {
+	background: none repeat scroll 0 0 #FFF;
+	border-right: 1px solid #FFF;
+	color: #353535;
+	font-weight: 700;
+	position: relative;
+	width: 135px;
+	z-index: 8000;
+}
+
+.ipsVerticalTabbed_tabs li a {
+    color: #fff;
+    display: block;
+    outline: 0 none;
+    padding: 10px 8px;
+    transition: background-color .3s ease-in-out 0;
+}
+.ipsVerticalTabbed_tabs li a:hover {
+    background: none repeat scroll 0 0 #FF9900;
+    color: #fff;
+}
+
+.ipsVerticalTabbed_content {
+	min-height: 400px;
+}
+
+.ipsLayout_content {
+	float: left;
+	width: 100%;
+}
+
+.ipsBox_container {
+	background: none repeat scroll 0 0 #FFF;
+	border: 1px solid #DBE4EF;
+}
+
+#profile_content_main {
+    line-height: 1.3;
+    margin-bottom: 20px;
+    min-height: 75px;
+    background-color: #6599FF;
+    background: 0 repeat-x scroll 0 0 transparent !important;
+    color: #fff;
+}
+
+#user_info_cell {
+	display: table-cell;
+	padding-right: 15px;
+	white-space: nowrap;
+}
+
+.ipsType_pagetitle,.ipsType_subtitle {
+	color: #323232;
+	font: 300 26px/1.3 Helvetica,Arial,sans-serif;
+}
+
+.reset_cursor {
+	cursor: default;
+}
+
+.ipsBadge {
+	border-radius: 4px 4px 4px 4px;
+	color: #FFF;
+	display: inline-block;
+	font-size: 9px;
+	font-weight: 700;
+	height: 15px;
+	line-height: 15px;
+	padding: 0 5px;
+	text-transform: uppercase;
+	vertical-align: middle;
+}
+
+.ipsBadge_lightgrey {
+	background: none repeat scroll 0 0 #B3B3B3;
+}
+
+.ipsBadge_green {
+	background: none repeat scroll 0 0 #7BA60D;
+}
+
+.ipsBadge_red {
+	background: none repeat scroll 0 0 #BF1D00;
+}
+
+.desc.lighter,.desc.lighter.blend_links a {
+	color: #A4A4A4;
+}
+
+.desc,.desc.blend_links a,p.posted_info {
+	color: #777;
+	font-size: 12px;
+}
+
+#user_status_cell {
+	display: table-cell;
+	vertical-align: top;
+	width: 100%;
+}
+
+#user_latest_status {
+	background: url(https://i78.servimg.com/u/f78/18/17/62/92/profil10.png) no-repeat scroll 0 50% transparent;
+	padding-left: 11px;
+}
+
+#user_latest_status > div {
+	background-color: #EBECE5;
+	border-radius: 6px 6px 6px 6px;
+	color: #343434;
+	font-size: 14px;
+	min-height: 45px;
+	padding: 10px 15px;
+	word-wrap: break-word;
+}
+
+#user_latest_status > div > span {
+/*display: block;*/
+}
+
+.ipsType_smaller,.ipsType_smaller a {
+	font-size: 11px !important;
+}
+
+.rating {
+	display: block;
+	line-height: 16px;
+	margin-bottom: 4px;
+}
+
+.rating img {
+	vertical-align: top;
+}
+
+.ipsLayout_content img {
+	max-width: 100%;
+}
+
+fieldset,img {
+	border: 0 none;
+}
+
+#user_utility_links {
+	margin-top: 10px;
+	text-align: right;
+}
+
+.ipsList_inline > li:first-child {
+	margin-left: 0;
+}
+
+.ipsList_inline > li {
+	display: inline-block;
+	margin: 0 3px;
+}
+
+.ipsButton_secondary {
+    background-color: #FF9900;
+    background: 0 repeat-x scroll 0 0 transparent !important;
+    border-radius: 50px;
+    color: #fff;
+    display: inline-block;
+    font-size: 14px;
+    transition: all .2s ease-in-out 0;
+    white-space: nowrap;
+    padding: 8px 14px;
+    font-weight: 700;
+}
+
+.ipsButton_secondary a {
+	color: #fff;
+}
+
+.topic_buttons li {
+	float: right;
+	margin: 5px 10px 0px 5px;
+}
+
+.topic_buttons li.important a,.topic_buttons li.important span,.ipsButton .important,.topic_buttons li a,.topic_buttons li span,.ipsButton {
+	-moz-border-bottom-colors: none;
+	-moz-border-left-colors: none;
+	-moz-border-right-colors: none;
+	-moz-border-top-colors: none;
+	background: url(https://i78.servimg.com/u/f78/18/17/62/92/topic_13.png) repeat-x scroll center top #212121;
+	border-color: #212121;
+	border-image: none;
+	border-radius: 3px 3px 3px 3px;
+	border-style: solid;
+	border-width: 1px 1px 0;
+	box-shadow: 0 1px 0 0 #5C5C5C inset, 0 2px 3px rgba(0,0,0,0.2);
+	color: #FFF !important;
+	cursor: pointer;
+	display: inline-block;
+	font: 300 12px/30px Helvetica,Arial,sans-serif;
+	height: 30px;
+	min-width: 125px;
+	padding: 0 10px;
+	text-align: center;
+	text-shadow: 0 -1px 0 #191919;
+}
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td {
+	margin: 0;
+	padding: 0;
+}
+
+.ipsLayout_largeright.ipsLayout_withright {
+	padding-right: 280px;
+}
+
+.ipsLayout.ipsLayout_withright {
+	clear: left;
+	padding-right: 280px;
+}
+
+.general_box {
+	background: none repeat scroll 0 0 #FCFCFC;
+	margin-bottom: 10px;
+}
+
+.general_box h3 {
+    background: none repeat scroll 0 0 #6599FF;
+    color: #fff;
+    font: 16px helvetica,arial,sans-serif;
+    padding: 8px 10px;
+    font-weight: 700;
+}
+
+.ipsList_data li {
+	line-height: 1.3;
+	margin-bottom: 6px;
+}
+
+.ipsList_data .row_title,.ipsList_data .ft {
+	display: inline-block;
+	float: left;
+	font-weight: 700;
+	padding-right: 10px;
+	text-align: right;
+	width: 120px;
+}
+
+#profile_panes_wrap .ipsList_data .row_data {
+	display: block;
+	margin-left: 130px;
+}
+
+.ipsList_data .row_data {
+	display: inline-block;
+	max-width: 100%;
+	word-wrap: break-word;
+}
+
+.ipsLayout_largeright.ipsLayout .ipsLayout_right {
+	margin-right: -280px;
+	width: 270px;
+}
+
+.ipsLayout .ipsLayout_right {
+	float: right;
+	margin-right: -210px;
+	width: 200px;
+}
+
+.reputation {
+	border-radius: 3px 3px 3px 3px;
+	display: inline-block;
+	font-weight: 700;
+	padding: 3px 8px;
+}
+
+.positive {
+	color: #6F8F52;
+}
+
+#profile_panes_wrap .reputation {
+	display: block;
+	float: none;
+	font-weight: 400;
+	margin: 0 0 5px;
+	padding: 10px;
+	text-align: center;
+}
+
+#profile_panes_wrap .reputation .number {
+	display: block;
+	font-size: 20px;
+	font-weight: 700;
+}
+
+.reputation.positive,.reputation.negative {
+	color: #FFF;
+}
+
+.reputation.positive,.members li.positive {
+	background: none repeat scroll 0 0 #6F8F52;
+}
+
+.reputation.negative,.members li.negative {
+	background: none repeat scroll 0 0 #B82929;
+}
+
+.reputation.zero {
+	background: none repeat scroll 0 0 #FF9900;
+	color: #6E6E6E;
+}
+
+.ipsUserPhoto_mini {
+	height: 30px;
+	width: 30px;
+}
+
+img,.input_check,.input_radio {
+	vertical-align: middle;
+}
+
+.ipsList_withminiphoto > li {
+	margin-bottom: 8px;
+}
+
+.left {
+	float: left;
+}
+
+hr {
+	display: none;
+}
+
+.short.photo_holder > img {
+	background: none repeat scroll 0 0 #FFF;
+	border: 1px solid #D5D5D5;
+	box-shadow: 0 2px 2px rgba(0,0,0,0.1);
+	padding: 1px;
+	max-height: 138px;
+	max-width: 138px;
+}
+
+.contact_field img {
+	margin-bottom: 6px;
+	margin-top: 6px;
+}
+
+ol,ul {
+	list-style: none outside none;
+}
+
+.popupWrapper {
+	background-color: rgba(70,70,70,0.6);
+	border-radius: 4px 4px 4px 4px;
+	box-shadow: 0 12px 25px rgba(0,0,0,0.7);
+	padding: 4px;
+}
+
+.popupInner {
+	background: none repeat scroll 0 0 #FFF;
+	box-shadow: 0 0 3px rgba(0,0,0,0.4);
+	overflow-x: hidden;
+	overflow-y: auto;
+	width: 500px;
+}
+
+.popupInner h3 {
+	background-color: #2C5687;
+	background: url(https://i78.servimg.com/u/f78/18/17/62/92/mainti10.png) repeat-x scroll center top #2C5687;
+	border-color: #316897;
+	border-style: solid;
+	border-width: 1px 1px 0;
+	box-shadow: 0 1px 0 #528CBC inset;
+	color: #FFF;
+	font-size: 16px;
+	font-weight: 300;
+	padding: 8px 10px 9px !important;
+	text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.ipsForm_horizontal .ipsField {
+	margin-bottom: 15px;
+}
+
+.ipsForm_horizontal .ipsField_content,.ipsForm_horizontal .ipsField_submit {
+	margin-left: 200px;
+}
+
+.ipsForm_horizontal .ipsField_title {
+	float: left;
+	line-height: 1.8;
+	padding-right: 15px;
+	text-align: right;
+	width: 185px;
+}
+
+.ipsField .ipsField_title {
+	font-size: 15px;
+	font-weight: 700;
+}
+
+.ipsField_primary input {
+	font-size: 18px;
+}
+
+.input_text,.ipsTagBox_wrapper {
+	background: none repeat scroll 0 0 #FFF;
+	border-color: #848484 #C1C1C1 #E1E1E1;
+	border-radius: 2px 2px 2px 2px;
+	border-style: solid;
+	border-width: 1px;
+	padding: 4px;
+}
+
+.input_text:focus {
+	border-color: #4E4E4E #7C7C7C #A3A3A3;
+	box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+
+input.inactive,select.inactive,textarea.inactive {
+	color: #C4C4C4;
+}
+
+.ipsForm_horizontal .ipsField_checkbox {
+	margin: 0 0 5px 200px;
+}
+
+.ipsForm .ipsField_checkbox input {
+	float: left;
+	margin-top: 3px;
+}
+
+.ipsForm .ipsField_checkbox .ipsField_content {
+	margin-left: 25px;
+}
+
+.desc.lighter,.desc.lighter.blend_links a {
+	color: #A4A4A4;
+}
+
+.ipsForm_center {
+	text-align: center;
+}
+
+.desc,.desc.blend_links a,p.posted_info {
+	color: #777;
+	font-size: 12px;
+}
+
+.ipsPad_top {
+	padding-top: 9px;
+}
+
+.ipsType_smaller,.ipsType_smaller a {
+	font-size: 11px !important;
+}
+
+.ipsForm_submit {
+	background-color: #CCC;
+	background: 0 repeat-x scroll 0 0 transparent !important;
+	border-top: 1px solid #CCC;
+	margin-top: 25px;
+	padding: 5px 10px;
+}
+
+.popupClose {
+	position: absolute;
+	right: 16px;
+	top: 12px;
+}
+
+.clickable {
+	cursor: pointer;
+}
+
+.topic_buttons li.important a,.topic_buttons li.important span,.ipsButton .important,.topic_buttons li a,.topic_buttons li span,.ipsButton {
+	-moz-border-bottom-colors: none;
+	-moz-border-left-colors: none;
+	-moz-border-right-colors: none;
+	-moz-border-top-colors: none;
+	background: url(https://i78.servimg.com/u/f78/18/17/62/92/topic_11.png) repeat-x scroll center top #212121;
+	border-color: #212121;
+	border-image: none;
+	border-radius: 3px 3px 3px 3px;
+	border-style: solid;
+	border-width: 1px 1px 0;
+	box-shadow: 0 1px 0 0 #5C5C5C inset, 0 2px 3px rgba(0,0,0,0.2);
+	color: #FFF !important;
+	cursor: pointer;
+	display: inline-block;
+	font: 300 12px/30px Helvetica,Arial,sans-serif;
+	height: 30px;
+	min-width: 125px;
+	padding: 0 10px;
+	text-align: center;
+	text-shadow: 0 -1px 0 #191919;
+}
+
+.topic_buttons li.important a,.topic_buttons li.important span,.ipsButton .important,.ipsButton.important {
+	background: url(https://i78.servimg.com/u/f78/18/17/62/92/topic_10.png) repeat-x scroll center top #812200;
+	border-color: #812200;
+	box-shadow: 0 1px 0 0 #DB6E46 inset, 0 2px 3px rgba(0,0,0,0.2);
+}
+
+.ipsButton_secondary {
+	background-color: #DBDBDB;
+	background: 0 repeat-x scroll 0 0 transparent !important;
+	border: 1px solid #DBDBDB;
+	border-radius: 3px 3px 3px 3px;
+	box-shadow: 0 1px 0 #FFF inset, 0 1px 0 rgba(0,0,0,0.3);
+	color: #616161;
+	display: inline-block;
+	font-size: 12px;
+	height: 22px;
+	line-height: 22px;
+	padding: 0 10px;
+	transition: all .2s ease-in-out 0;
+	white-space: nowrap;
+}
+
+.ipsBox_notice {
+	line-height: 1.6;
+	margin-bottom: 10px;
+	padding: 10px;
+}
+
+.ipsBox_notice,.ipsBox_highlight {
+	background: none repeat scroll 0 0 #F4FCFF;
+	border-bottom: 1px solid #CAE9F5;
+}
+img[src="https://illiweb.com/fa/invision/pp-blank-thumb.png"] {
+display: none;
+}
+</style>
+<div id="ajax_loading" style="display: none;"><img src="https://i69.servimg.com/u/f69/18/17/62/92/ajax_l10.gif"></div>
+<div id="document_modal" class="modal" style="display:none; width: 100%; height: 100%; position: fixed; top: 0px; left: 0px; z-index: 10000; opacity: 0.4; background-color: #3E3E3E;"></div>
+
+<!-- BEGIN switch_user_logged_out -->
+
+<div id="pun-visit">
+	<p>{L_NOT_CONNECTED} {L_LOGIN_REGISTER}</p>
+</div>
+
+<!-- END switch_user_logged_out -->
+<!-- BEGIN switch_user_logged_in -->
+<ul class="topic_buttons">
+	<li class="editPerfil" style="display: none"><a href="/profile?mode=editprofile">تعديل ملفي الشخصي</a></li>
+	<li class="editMember" style="display: none"><a href="">تعديل البيانات</a></li>
+	<li class="FlagSpam" style="display: none"><a href="javascript:void(0);" onclick="show_popup('ban_member_popup');">حظر</a></li>
+</ul>
+<!-- END switch_user_logged_in -->
+<div id="profile_background" class="ipsBox clear2 vcard" style="display: ;">
+	<div class="ipsVerticalTabbed ipsLayout ipsLayout_withleft ipsLayout_smallleft clearfix">
+        <div id="user_status" style="display: none">{USER_ONLINE}</div>
+		<div id="profile_tabs" class="ipsVerticalTabbed_tabs ipsLayout_left">
+			<p class="short photo_holder">
+                          <div class="avatar-last">{AVATAR_IMG}</div>
+			</p>
+			<ul class="clear2">
+				<li data-tabid="user_info" class="tab_toggle" id="tab_link_core_info"><a href="#pane_core_info">نظرة عامة</a></li>
+				<li data-tabid="friends" class=" tab_toggle" id="tab_link_members:friends"><a href="#pane_members_friends">الاصدقاء</a></li>
+				<li data-tabid="topics" class="tab_toggle" id="tab_link_forums_topics"><a href="#pane_forums_topics">المواضيع</a></li>
+				<li data-tabid="posts" class="tab_toggle" id="tab_link_forums_posts"><a href="#pane_forums_posts">المشاركات</a></li>
+			</ul>
+		</div>
+		<div id="profile_content" class="ipsVerticalTabbed_content ipsLayout_content ipsBox_container" style="min-height: 461px;">
+			<div class="ipsPad">
+				<div id="profile_content_main">
+					<div id="user_info_cell">
+						<h1 class="ipsType_pagetitle">
+							<span class="fn nickname">{USERNAME}</span> <span id="user_connected" data-tooltip="" class="ipsBadge ipsBadge_lightgrey reset_cursor style="margin-top: -5px;>{USER_ONLINE}</span>
+						</h1>
+						تاريخ التسجيل: <span class="joined_in"></span><br>
+						<span id="user_suspended" class="ipsBadge ipsBadge_red" style="display: none; margin-right: 4px;">نشر المعاقين</span>
+						<span id="user_banned" class="ipsBadge ipsBadge_red" style="display: none; margin-right: 4px;">حظر</span>
+						</div>
+					<div id="user_status_cell" style="display: none">
+						<div id="user_latest_status">
+							<div>
+								<span id="uneditable" class="user_comments" style="display: block"></span>
+								<span id="editable" class="user_comments" style="display: none"></span>
+								<br>
+								<textarea id="profile_field_2_-20" class="inputbox" name="profile_field_2_-20" cols="60" rows="7"></textarea>
+								<span class="ipsType_smaller desc lighter blend_links" style="display: block"><a href="javascript:void(0);" onclick="editableField()">{L_UPDATE}</a></span>
+							</div>
+						</div>
+					</div>
+                                          					<span style="margin-bottom: 10px" class="rating left clear2">
+						<a title="محايد" id="user_rate_1" href="javascript:void(0);"><img class="rate_img" alt="-" src="https://i69.servimg.com/u/f69/16/62/61/50/star_o10.png"></a>
+						<a title="منتظم" id="user_rate_2" href="javascript:void(0);"><img class="rate_img" alt="-" src="https://i69.servimg.com/u/f69/16/62/61/50/star_o10.png"></a>
+						<a title="جيد" id="user_rate_3" href="javascript:void(0);"><img class="rate_img" alt="-" src="https://i69.servimg.com/u/f69/16/62/61/50/star_o10.png"></a>
+						<a title="أفضل" id="user_rate_4" href="javascript:void(0);"><img class="rate_img" alt="-" src="https://i69.servimg.com/u/f69/16/62/61/50/star_o10.png"></a>
+						<a title="ممتاز" id="user_rate_5" href="javascript:void(0);"><img class="rate_img" alt="-" src="https://i69.servimg.com/u/f69/16/62/61/50/star_o10.png"></a>
+						<span class="desc" id="rating_text"></span>
+					</span>
+					<ul id="user_utility_links" class="ipsList_inline">
+						<li class="ipsButton_secondary" id="pm_button" style="display: none">
+							<a href="#"><img src="https://i69.servimg.com/u/f69/16/62/61/50/email_10.png">&nbsp;&nbsp; ارسال رسالة</a>
+						</li>
+						<li>
+							<a class="ipsButton_secondary" href="/st/{PUSERNAME}"><img src="https://i69.servimg.com/u/f69/16/62/61/50/page_t10.png">&nbsp;&nbsp;  المحتوى</a>
+						</li>
+					</ul>
+				</div>
+
+				<div class="clearfix" id="profile_panes_wrap" style="height: auto;">
+					<div class="ipsLayout ipsLayout_withright ipsLayout_largeright clearfix tab_link_pane" id="pane_core_info">
+						<div class="ipsLayout_content">
+							<div class="general_box clearfix" id="user_humor_id" style="display: none">
+								<h3>معلومات عني</h3>
+								<div class="ipsPad">
+									<span class="user_humor"></span><br>
+								</div>
+							</div>
+							
+							<div class="general_box clearfix">
+								<h3>إحصائيات</h3>
+								<br>
+								<ul class="ipsList_data clearfix">
+									<li class="clear2 clearfix">
+										<span class="row_title">الرتبة:</span>
+										<span class="row_data"><span style="color:red">{POSTER_RANK}</span></span><span id="poster_rank" class="row_data"></span>
+									</li>
+									<li class="clear2 clearfix">
+										<span class="row_title">المشاركات:</span>
+										<span id="amount_posts" class="row_data"></span>
+									</li>
+									<li class="clear2 clearfix" style="display: none;">
+										<span class="row_title">المشاهدات:</span>
+										<span class="row_data"></span>
+									</li>
+									<li class="clear2 clearfix" style="display: none;">
+										<span class="row_title">عنوان:</span>
+										<span class="row_data"></span>
+									</li>
+									<!-- BEGIN profile_field -->
+									<li class="clear2 clearfix" id="field_id{profile_field.ID}">
+                                        <span class="row_title">{profile_field.LABEL}</span>
+                                        <span class="row_data">{profile_field.CONTENT}</span>
+									</li>
+									<!-- END profile_field -->
+									<li class="clear2 clearfix">
+										<span class="row_title">اخر زيارة:</span>
+										<span class="row_data">{LAST_VISIT_TIME}</span><span class="row_data"><span id="last_visit_time"></span></span>
+									</li>
+								</ul>
+								<br>
+							</div>
+							<div class="general_box clearfix" id="contact_field">
+								<h3>حالة الاتصال </h3>
+								<br>
+								<ul class="ipsList_data clearfix">
+									<!-- BEGIN contact_field -->
+									<li class="clear2 clearfix">
+                                        <span class="row_title">{contact_field.LABEL}</span>
+                                        <span class="row_data">{contact_field.CONTENT}</span>
+									</li>
+									<!-- END contact_field -->
+								
+									<li id="cnt_email" class="clear2 clearfix">
+										<span class="row_title">E-mail:</span>
+										<span class="row_data">
+											<a href=""></a>
+										</span>
+									</li>
+									
+								</ul>
+							</div>
+						</div>
+						<div class="ipsLayout_right">
+							<div data-tooltip="{PUSERNAME}" class="reputation zero" id="reputation_panel">
+								<span class="number"></span>
+								<span class="title"></span>
+							</div>
+							<br>
+							<div class="general_box clearfix">
+								<h3>أدوات المستخدم</h3>
+								<ul class="ipsPad">
+									<li >
+										<a rel="nofollow" id="st_pusername" href="/st/{PUSERNAME}">
+											<img alt="- " src="https://i69.servimg.com/u/f69/16/62/61/50/page_t10.png">&nbsp;&nbsp; البحث عن الرسائل
+										</a>
+									</li>
+									<li>
+										<a rel="nofollow" id="sta_pusername" href="/sta/{PUSERNAME}">
+											<img alt="- " src="https://i69.servimg.com/u/f69/16/62/61/50/topics10.png">&nbsp;&nbsp; مواضيعى
+										</a>
+									</li>
+									<li>
+										<a rel="nofollow" id="spa_pusername" href="/spa/{PUSERNAME}">
+											<img alt="- " src="https://i69.servimg.com/u/f69/16/62/61/50/t_unre10.png">&nbsp;&nbsp; مسهماتى
+										</a>
+									</li>
+									<!-- BEGIN switch_auth_user -->
+									<li id="administrative" style="display: none;">
+										<span class="row_title"><br>{L_ADMINISTRATE_USER}: </span>
+										<span class="row_data">
+											<strong>
+												<span id="admin_user">{ADMINISTRATE_USER}</span>
+												<span id="ban_user">{BAN_USER}</span>
+											</strong>
+										</span>
+									</li>
+									<!-- END switch_auth_user -->
+									<!-- BEGIN switch_admin_user_comment_active -->
+									<form action="{S_PROFILE_ACTION}" method="post" name="post">
+										<dl>
+											<dt>{L_COMMENTS} :<br /><span class="italic">{L_MODS_AND_ADMINS}</span></dt>
+											<dd><textarea name="admin_user_comment_text" rows="8" cols="30">{ADMIN_USER_COMMENT}</textarea></dd>
+										</dl>
+										<dl class="frm-buttons clearfix">
+											<dt>&nbsp;</dt>
+											<dd><input type="hidden" value="update_admin_user_comment" name="mode" />
+											<input type="hidden" value="{USER_ID}" name="userid" />
+											<input type="submit" name="user_comment_maj" value="{L_UPDATE}" /></dd>
+										</dl>
+									</form>
+									<!-- END switch_admin_user_comment_active -->
+								</ul>
+							</div>
+							<div id="friends_overview" class="general_box clearfix">
+								<h3>{L_FRIENDS_AND_FOES}</h3>
+								<ul class="ipsPad">
+									<!-- BEGIN switch_allow_friendsfoes -->
+									<li id="friends_foes">
+										{FRIENDSFOES}
+									</li>
+									<!-- END switch_allow_friendsfoes -->
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- #region tabReputation -->
+
+					<div class="tab_link_pane" id="pane_members_reputation" style="display: none;">
+						<div class="general_box">
+							<div class="maintitle ipsFilterbar clearfix">
+								<ul class="ipsList_inline ipsType_smaller left">
+									<li class="active">
+										<a href="javascript:void(0);">Forum</a>
+									</li>
+									<li>
+										<a href="javascript:void(0);">Calendar</a>
+									</li>
+								</ul>
+								<ul class="ipsList_inline ipsType_smaller right">
+									<li class="active">
+										<a href="javascript:void(0);">Received</a>
+									</li>
+								</ul>
+							</div>
+							<div class="no_messages">There is no content to display.</div>
+						</div>
+					</div>
+					
+					<!-- #endregion tabReputation -->
+					<!-- #region tabFriends -->
+					<div class="tab_link_pane" id="pane_members_friends" style="display: none;">
+						<div class="general_box">
+							<div id="friend_list" class="friend_list clear">
+								<h3 class="bar">{L_FRIENDS_AND_FOES}</h3>
+								<ul class="ipsPad">
+									<!-- BEGIN switch_allow_friendsfoes -->
+									<li id="friends_foes">
+										{FRIENDSFOES}
+									</li>
+									<!-- END switch_allow_friendsfoes -->
+								</ul>
+							</div>
+							<br>
+						</div>
+					</div>
+					<!-- #endregion tabFriends -->
+					<!-- #region tabTopics -->
+					<div class="tab_link_pane" id="pane_forums_topics" style="display: none;">
+						<div class="ipsLayout_content">
+							<div class="main paged" style="margin-top: -15px;">
+							</div>
+						</div>
+					</div>
+					<!-- #endregion tabTopics -->
+					<!-- #region tabPosts -->
+					<div class="tab_link_pane" id="pane_forums_posts" style="display: none;">
+						<div class="ipsLayout_content">
+							<div class="main paged" style="margin-top: -15px;">
+							</div>
+						</div>
+					</div>
+					<!-- #endregion tabPosts -->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- #region sign_in_popup -->
+<div id="ban_member_popup" style="display: none; position: fixed; top: 9%; left: 27%; z-index: 10001" class="popupWrapper">
+	<div id="ban_member_popup_inner" class="popupInner" style="width: 600px; max-height: 641px;">
+		<div style="" id="inline_ban_form">
+			<form id="confirm_ban" method="post" target="iBanMember" action="/modcp?tid={TID}">
+				<h3>تأكيد - إبعاد عضو</h3>
+				<div class="ipsBox_notice ipsForm_center">
+                    تحديد فترة و سبب لتعليق عضو !
+                </div>
+				<div class="ipsForm ipsForm_horizontal">
+					<fieldset>
+						<ul>
+							<li class="ipsField ipsField_primary">
+								<label class="ipsField_title" for="ban_user_date">لمدة:</label>
+								<div class="ipsField_content">
+									<input type="text" tabindex="0" size="10" name="ban_user_date" class="input_text" id="ips_bandate"><span> أيام مضت .</span>
+								</div>
+							</li>
+							<li class="ipsField ipsField_primary">
+								<label class="ipsField_title" for="ban_user_reason">للأسباب التالية:</label>
+								<div class="ipsField_content">
+									<input type="text" tabindex="1" size="40" name="ban_user_reason" class="input_text" id="ips_banreason"><br>
+								</div>
+							</li>
+							<li class="ipsField ipsField_checkbox">
+								<span class="desc lighter">المجالات المذكورة أعلاه اختيارية .</span>
+							</li>
+						</ul>
+					</fieldset>
+					<div class="ipsForm_submit ipsForm_center">
+                        <input type="hidden" value="{TID}" name="tid">
+                        <input type="hidden" value="ban" name="mode">
+                        <input type="hidden" value="{CUR_USER_ID}" name="user_id">
+						<input type="submit" tabindex="2" class="login-submit ipsButton important" name="confirm" value="أكد"/>&nbsp;
+						<input type="button" tabindex="3" class="login-submit ipsButton" name="cancel" onclick="show_popup('ban_member_popup');" value="إلغاء"/>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div id="ban_member_popup_close" class="popupClose clickable">
+		<img alt="x" src="https://i69.servimg.com/u/f69/16/62/61/50/close_10.png" onclick="show_popup('ban_member_popup');">
+	</div>
+	<iframe name="iBanMember" height="0px" width="0px" frameborder="0"></iframe>
+</div>
+<!-- #endregion sign_in_popup -->
+<script type="text/javascript">
+    //<![CDATA[
+	<!-- BEGIN switch_show_status -->
+	USER_STATUS = $.trim('{USER_ONLINE}');
+	<!-- END switch_show_status -->    
+    USERNAME = '{USERNAME}';
+    PUSERNAME = '{PUSERNAME}';
+    //]]>
+</script>
