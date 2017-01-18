@@ -1,0 +1,45 @@
+<!-- BEGIN classical_row -->
+<div class="recent_post nodis">
+	<div class="content_to_take">
+          	<!-- BEGIN recent_topic_row -->
+		<h4>
+                        <b class="right">
+                                <!-- BEGIN switch_poster -->
+                        	بواسطة <a href="{classical_row.recent_topic_row.switch_poster.U_POSTER}">{classical_row.recent_topic_row.switch_poster.S_POSTER}</a>
+                              	<!-- END switch_poster -->
+                              	<!-- BEGIN switch_poster_guest -->
+                               	{classical_row.recent_topic_row.switch_poster_guest.S_POSTER}
+                               	<!-- END switch_poster_guest -->
+                       	</b>
+                     	<a href="{classical_row.recent_topic_row.U_TITLE}" title="{scrolling_row.recent_topic_row.L_TITLE}">{classical_row.recent_topic_row.L_TITLE}</a> <blah>- {classical_row.recent_topic_row.S_POSTTIME}</blah>
+               	</h4>
+               	<!-- END recent_topic_row -->
+	</div>
+</div>
+<div class="a_box recent_post current_tab" data-module=".recent_post">
+	<div id="a_box_padding">
+		<div id="abox_descript">
+                  
+			<h3>المواضيع <span>آخر</span></h3>
+			<div class="sub_n_rank" id="control_m_tab">
+                          <span data-module=".most_viewed_post">الأكثر مشاهدة</span>
+						</div>
+		</div>
+		<div id="abox_lastpost" class="current_content">
+                  	<!-- BEGIN recent_topic_row -->
+			<h4>
+                        	<b class="right">
+                                  	<!-- BEGIN switch_poster -->
+                                  	by <a href="{classical_row.recent_topic_row.switch_poster.U_POSTER}">{classical_row.recent_topic_row.switch_poster.S_POSTER}</a>
+                                  	<!-- END switch_poster -->
+                                  	<!-- BEGIN switch_poster_guest -->
+                                  	{classical_row.recent_topic_row.switch_poster_guest.S_POSTER}
+                                  	<!-- END switch_poster_guest -->
+                          	</b>
+                        	<a href="{classical_row.recent_topic_row.U_TITLE}">{classical_row.recent_topic_row.L_TITLE}</a> <blah>- {classical_row.recent_topic_row.S_POSTTIME}</blah>
+                  	</h4>
+                  	<!-- END recent_topic_row -->
+		</div>
+	</div>
+</div>
+<!-- END classical_row -->
